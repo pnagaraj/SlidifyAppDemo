@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test the normality of sample means</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Test the normality of sample means">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Test the normality of sample means</h1>
+    <h2>Created using Slidify</h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>INTRODUCTION</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The distribution of sample means drawn from any distribution approach a normal distribution as the number of samples means is increased. </li>
+<li>To demonstrate this, samples means are drawn from multiple simulations of exponential distribution. The mean of the means is calculated.</li>
+<li>The sample means are standardized and distribution is compared against a standard Normal distribution. </li>
+<li>The mean of means is compared with the population mean. </li>
+</ol>
+
+<h2>USER INTERFACE</h2>
+
+<ul>
+<li>The application requires lambda and sample size parameters as inputs. These parameters of that of the exponential distribution.</li>
+<li>In addition, the number of simulations must be input. </li>
+<li>In the next two slides, number of simulations is varied from 10 to 1000. The distribution of means for each case is shown in cyan and a standard normal distribution is shown in purple for comparison.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>RESULT:</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The distribution of sample means does not match the Normal distribution.</li>
+<li>Shown for Number of simulations = 20 (small number of simulation), lambda=0.5, sample size=40</li>
+</ol>
+
+<p><img src="assets/fig/norm1-1.png" alt="plot of chunk norm1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>RESULT:</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The distribution of sample means matches the Normal distribution</li>
+<li>Shown for Number of simulations = 1000 (a large number of simulation), lambda=0.5, sample size=40</li>
+</ol>
+
+<p><img src="assets/fig/norm2-1.png" alt="plot of chunk norm2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Conclusion</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>As the number of simulations increase, 
+
+<ul>
+<li>The means drawn from the exponential distribution follow a Normal distribution.</li>
+<li>The percent difference between the sample and the population means decreases.</li>
+</ul></li>
+<li>For small number of simulations, the percent difference between sample mean and population mean is 0.86 %</li>
+<li>For large number of simulations, the percent difference between sample mean and population mean is -0.36 %</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='INTRODUCTION'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='RESULT:'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='RESULT:'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Conclusion'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

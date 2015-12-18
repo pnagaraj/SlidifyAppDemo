@@ -1,0 +1,115 @@
+---
+title       : Test the normality of sample means
+subtitle    : Created using Slidify
+author      : 
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## INTRODUCTION
+
+1. The distribution of sample means drawn from any distribution approach a normal distribution as the number of samples means is increased. 
+2. To demonstrate this, samples means are drawn from multiple simulations of exponential distribution. The mean of the means is calculated.
+3. The sample means are standardized and distribution is compared against a standard Normal distribution. 
+4. The mean of means is compared with the population mean. 
+
+## USER INTERFACE
+
+* The application requires lambda and sample size parameters as inputs. These parameters of that of the exponential distribution.
+* In addition, the number of simulations must be input. 
+* In the next two slides, number of simulations is varied from 10 to 1000. The distribution of means for each case is shown in cyan and a standard normal distribution is shown in purple for comparison.
+
+--- .class
+
+## RESULT: 
+
+1. The distribution of sample means does not match the Normal distribution.
+2. Shown for Number of simulations = 20 (small number of simulation), lambda=0.5, sample size=40
+
+
+```{r norm1, echo=FALSE, eval=TRUE,fig.width=8,fig.height=6}
+library(ggplot2)
+library(grid)
+
+n<-40
+nosim<-20
+lambda<-0.5
+# vector of means
+means <- apply(matrix(rexp(nosim * n, rate = lambda), nosim), 1, mean)
+# show that the mean of means is equal to 1/lambda
+popmean<-1/lambda
+sampmean<-mean(means)
+# percent difference in means
+meandif<-100*(popmean-sampmean)/popmean
+
+# remove the mean and divide by standard deviation
+se <- 1/(lambda * sqrt(n))
+x1 <- (means - (1/lambda))/se
+
+# plot histogram of the distribution of means and overlay the Z-normal
+# distribution
+g <- ggplot(data.frame(x1), aes(x1))
+g <- g + geom_histogram(binwidth = 0.5, colour = "black", fill = "cyan", aes(y = ..density..))
+g <- g + stat_function(fun = dnorm, color = "purple", size = 2)
+g <- g + labs(x = "Sample means", y = "Density")
+g + labs(title = "Compare sample means to standard normal distribution.") 
+
+```
+
+--- .class
+
+## RESULT: 
+1. The distribution of sample means matches the Normal distribution
+2. Shown for Number of simulations = 1000 (a large number of simulation), lambda=0.5, sample size=40
+
+
+```{r norm2, echo=FALSE, eval=TRUE,fig.width=8, fig.height=6}
+library(ggplot2)
+library(grid)
+
+n<-40
+nosim<-1000
+lambda<-0.5
+# vector of means
+means <- apply(matrix(rexp(nosim * n, rate = lambda), nosim), 1, mean)
+# show that the mean of means is equal to 1/lambda
+popmean<-1/lambda
+sampmean<-mean(means)
+# percent difference in means
+meandif2<-100*(popmean-sampmean)/popmean
+
+# remove the mean and divide by standard deviation
+se <- 1/(lambda * sqrt(n))
+x1 <- (means - (1/lambda))/se
+
+# plot histogram of the distribution of means and overlay the Z-normal
+# distribution
+g <- ggplot(data.frame(x1), aes(x1))
+g <- g + geom_histogram(binwidth = 0.5, colour = "black", fill = "cyan", aes(y = ..density..))
+g <- g + stat_function(fun = dnorm, color = "purple", size = 2)
+g <- g + labs(x = "Sample means", y = "Density")
+g + labs(title = "Compare sample means to standard normal distribution.")
+
+```
+
+
+
+--- .class #id
+
+## Conclusion
+
+1. As the number of simulations increase, 
+    + The means drawn from the exponential distribution follow a Normal distribution.
+    + The percent difference between the sample and the population means decreases.
+2. For small number of simulations, the percent difference between sample mean and population mean is `r format(signif(meandif,digits=2),scientific=FALSE)` %
+3. For large number of simulations, the percent difference between sample mean and population mean is `r format(signif(meandif2,digits=2),scientific=FALSE)` %
+
+
+
+
+

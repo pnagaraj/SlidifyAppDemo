@@ -1,0 +1,1 @@
+This README contains files created by Slidify to test the normality of sample means drawn from a random distribution.
